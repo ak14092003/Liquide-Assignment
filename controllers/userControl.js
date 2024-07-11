@@ -26,7 +26,7 @@ register: async(req,res) => {
            const refreshToken = createRefreshToken({ id: newUser._id });
            newUser.refreshToken = refreshToken;
            await newUser.save();
-           res.json({ accesstoken});
+           res.json({ accesstoken, refreshToken});
 
         }
         catch(err){
@@ -52,7 +52,7 @@ login: async(req,res) => {
        await user.save();
        
 
-       res.json({ accesstoken });
+       res.json({ accesstoken,refreshToken });
       
     }
     catch(err){
